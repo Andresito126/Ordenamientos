@@ -1,6 +1,9 @@
 import linkedList from "./dependencies.mjs";
-import grafica from "../../grafica.mjs";
+import { grafica } from "../../grafica.mjs";
+import { graficaAlgoritmos } from "../../grafica.mjs";
 import { bubbleSort } from "../models/Array.mjs";
+import { mergeSortArray } from "../models/Array.mjs";
+import { radixSort } from "../models/Array.mjs";
 
 //Declaración de variables para manipular eventos
 let btnInsert = document.getElementById("btn-insertar");
@@ -9,25 +12,25 @@ let btnOrder = document.getElementById("btn-ordenar");
 let array = [];
 
 //Variables para medir el tiempo de un proceso
-let timeInit = 0,timeEnd = 0,executionTime = 0;
+let timeInit = 0,
+  timeEnd = 0,
+  executionTime = 0;
 
 const initializeVariables = () => {
   timeInit = 0;
   timeEnd = 0;
   executionTime = 0;
-}
-
+};
 
 //Evento para insertar los correspondientes datos a la linkedList y al array
 btnInsert.addEventListener("click", () => {
-  let graphInsertDOM = document.getElementById('container-graph-insert');
+  let graphInsertDOM = document.getElementById("main_container-graph-insert");
   fetch("./bussines.json")
     .then((response) => response.json())
     .then((data) => {
       let processExecutionILk = insertLinkedList(data);
       let processExecutionIA = insertArray(data);
-      grafica(processExecutionILk,processExecutionIA,graphInsertDOM)
-      
+      grafica(processExecutionILk, processExecutionIA, graphInsertDOM);
     })
     .catch((err) => console.log(err));
 });
@@ -35,12 +38,12 @@ btnInsert.addEventListener("click", () => {
 const insertLinkedList = (data) => {
   timeInit = Date.now();
 
-  for (let x = 0; x < 5; x++) {
+  for (let x = 0; x < 30000; x++) {
     linkedList.push(data[x]);
   }
 
   timeEnd = Date.now();
-  executionTime = ((timeEnd - timeInit) / 1000);
+  executionTime = (timeEnd - timeInit) / 1000;
 
   console.log(
     "Tiempo de ejecución de inserción para la linked list: " + executionTime
@@ -51,16 +54,15 @@ const insertLinkedList = (data) => {
 };
 
 const insertArray = (data) => {
-  //LLamando a la función para que inicialice a las variables de timeInit y timeEnd.
   initializeVariables();
   timeInit = Date.now();
 
-  for (let x = 0; x < 5; x++) {
+  for (let x = 0; x < 30000; x++) {
     array.push(data[x]);
   }
 
   timeEnd = Date.now();
-  executionTime = ((timeEnd - timeInit) / 1000);
+  executionTime = (timeEnd - timeInit) / 1000;
 
   console.log(
     "Tiempo de ejecución de inserción para el array: " + executionTime
@@ -92,37 +94,33 @@ btnSearch.addEventListener("click", () => {
     });
   } else {
     let objetoBuscar = document.getElementById("objBuscar").value;
-    let graphSearchDOM = document.getElementById('container-graph-search');
     console.log(objetoBuscar);
-    let processSearchLK = buscarListaEnlazada(objetoBuscar);
-    let processSearchA = buscarArray(objetoBuscar);
+    let graphSearchDOM = document.getElementById("main_container-graph-search");
+    let processSearchLK = searchLinkedList(objetoBuscar);
+    let processSearchA = searchArray(objetoBuscar);
 
-    console.log(processSearchLK,processSearchA)
-
-    if(!processSearchLK && !processSearchA){
+    console.log(processSearchA, processSearchLK);
+    if (!processSearchLK && !processSearchA) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "No se encontró dicho dato",
-      })
-    }else{
-      grafica(processSearchLK,processSearchA,graphSearchDOM);
+      });
+    } else {
+      grafica(processSearchLK, processSearchA, graphSearchDOM);
       document.getElementById("objBuscar").value = "";
     }
   }
 });
 
-const buscarListaEnlazada = (objBuscar) => {
-  //LLamando a la función para que inicialice a las variables de timeInit y timeEnd.
+const searchLinkedList = (objBuscar) => {
   initializeVariables();
-  console.log("Objeto entrando linked " + objBuscar);
-  
   timeInit = Date.now();
 
-  for (let x = 0; x < 150346; x++) {
+  for (let x = 0; x < 30000; x++) {
     if (objBuscar == linkedList.getElementAt(x).data.business) {
       timeEnd = Date.now();
-      executionTime = ((timeEnd - timeInit) / 1000);
+      executionTime = (timeEnd - timeInit) / 1000;
       console.log(
         "Tiempo de ejecución para buscar en lk a " +
           objBuscar +
@@ -135,19 +133,14 @@ const buscarListaEnlazada = (objBuscar) => {
   return false;
 };
 
-
-
-const buscarArray = (objBuscar) => {
-  //LLamando a la función para que inicialice a las variables de timeInit y timeEnd.
+const searchArray = (objBuscar) => {
   initializeVariables();
-
-  console.log("Objeto entrando array " + objBuscar);
-
   timeInit = Date.now();
-  for (let x = 0; x < 150346; x++) {
+
+  for (let x = 0; x < 30000; x++) {
     if (objBuscar == array[x].business) {
       timeEnd = Date.now();
-      executionTime = ((timeEnd - timeInit) / 1000);
+      executionTime = (timeEnd - timeInit) / 1000;
       console.log(
         "Tiempo de ejecución para buscar en array a " +
           objBuscar +
@@ -181,14 +174,52 @@ btnOrder.addEventListener("click", () => {
       },
     });
   } else {
-    let graphOrderDOM = document.getElementById('container-graph-order');
-    let {executionTime, arr} = bubbleSort(array);
-    console.log(executionTime)
-    console.log(arr)
-    //ordenarMergeSort();
-    //ordenarRadixSort();
+    let graphOrderDOM = document.getElementById("main_container-graph-order");
+    let arregloBubbleSort = [...array];
+    let arregloMergeSort = [...array];
+    let arregloRadixSort = [...array];
+    let { executionTimeProcessB, arrB } = bubbleSort(arregloBubbleSort);
+    let { executionTimeProcessM, arrM } = mergeSortArray(arregloMergeSort);
+    let { executionTimeProcessR, arrR } = radixSort(arregloRadixSort);
+
+    console.log(
+      `Tiempo de ejecución de bubbleSort: ${executionTimeProcessB} segundos`
+    );
+    console.log(arrB);
+
+    console.log(
+      `Tiempo de ejecución de mergeSort: ${executionTimeProcessM} segundos`
+    );
+    console.log(arrM);
+
+    console.log(
+      `Tiempo de ejecución de radixSort: ${executionTimeProcessR} segundos`
+    );
+    console.log(arrR);
+
+    let executionTimeLinkedListBubbleSort = linkedList.bubbleSort();
+    console.log(
+      `Tiempo de ejecución de bubbleSort en LinkedList: ${executionTimeLinkedListBubbleSort} segundos`
+    );
+
+    let resultMerge = linkedList.mergeSort();
+    let { executionTimeLinkedListM, sortedList } = resultMerge;
+
+    console.log('Tiempo de procesamiento:' + executionTimeLinkedListM + 's');
+
+    let resultRadix = linkedList.radixSort();
+    let {executionTimeLinkedListR, lkR} = resultRadix;
+    
+    console.log('Tiempo de ejecución de radix:' + executionTimeLinkedListR + 'segundos');
+
+    graficaAlgoritmos(
+      executionTimeProcessB,
+      executionTimeProcessM,
+      executionTimeProcessR,
+      executionTimeLinkedListBubbleSort,
+      executionTimeLinkedListM,
+      executionTimeLinkedListR,
+      graphOrderDOM
+    );
   }
 });
-
-
-

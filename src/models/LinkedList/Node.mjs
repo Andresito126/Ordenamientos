@@ -1,12 +1,21 @@
 export default class Node {
-    data
-    next
+  data;
+  next;
 
-    constructor(data){
-        this.data = data
-        this.next = undefined
-    }
-    getData () {
-        return this.data
-    }
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+
+  getNext() {
+    return this.next;
+  }
+
+  getData() {
+    return this.data;
+  }
+
+  setNext(nextNode) {
+    this.next = nextNode;
+  }
 }
