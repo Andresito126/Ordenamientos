@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+}
+
+.header {
+    width: 100%;
+    height: 15vh;
+    background-color: #167cb4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.header-title {
+    font-size: 3em;
+    font-weight: 600;
+}
+
+.container {
+    display: flex;
+}
+
+.aside {
+    width: 25%;
+    background-color: #116796;
+    min-height: 80vh;
+    padding: 2%;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 15vh; 
+    align-self: flex-start;
+}
+
+.algoritmos {
+    background-color: #D3AB48;
+    color: #fff;
+    margin-top: 15%;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.algoritmos-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+}
+
+.algoritmos-text {
+    font-size: 1em;
+    padding-left: 10%;
+    margin-bottom: 1em;
+}
+
+.algoritmos-button {
+    display: block;
+    width: 100%;
+    padding: 0.75em;
+    font-size: 1em;
+    font-weight: 600;
+    color: #fff;
+    background-color: #116796;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.algoritmos-input {
+    display: block;
+    width: 100%;
+    padding: 0.75em;
+    font-size: .8em;
+    font-weight: 600;
+    color: #282626;
+    background-color: #d0d0d0;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-bottom: .5em;
+    outline: none;
+}
+
+.algoritmos-button:hover {
+    background-color: #244f6c;
+}
+
+.toggle-input {
+    display: none;
+}
+
+.algoritmos-content {
+    display: none;
+}
+
+.toggle-input:checked + .algoritmos-title + .algoritmos-content {
+    display: block;
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    user-select: none;
+    pointer-events: none;
+}
+
+.main {
+    width: 75%;
+    padding: 1%;
+}
+
+#main_container-graph-insert,
+#main_container-graph-search,
+#main_container-graph-order {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    padding: 2%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#main_container-graph-insert {
+    background-color: #167cb4;
+    height: 700px;
+}
+
+#main_container-graph-search {
+    background-color: #167cb4;
+    height: 700px;
+}
+
+#main_container-graph-order {
+    background-color: #167cb4;
+    height: 700px;
+}
+
+.footer {
+    background-color: #333;
+    padding: 1em 0;
+}
+
+.footer-title {
+    font-size: 2em;
+    font-weight: 600;
+    text-align: center;
+    color: #d8d8dc;
+}
+
+.footer-parrafo {
+    font-size: 1em;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 0.5em;
+    color: #b4b4b5;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos de ordenamiento</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1 class="header-title">MÉTODOS DE ORDENAMIENTO</h1>
+    </header>
+
+    <div class="container">
+        <aside class="aside">
+            <div class="algoritmos">
+                <input type="checkbox" id="toggle-inserciones" class="toggle-input">
+                <label for="toggle-inserciones" class="algoritmos-title">Inserciones
+                    <span class="toggle-button">▼</span>
+                </label>
+                <div class="algoritmos-content">
+                    <p class="algoritmos-text">Array. <br>Linked list.</p>
+                    <button id="btn-insertar" class="algoritmos-button">INSERTAR</button>  
+                </div>
+            </div>
+
+            <div class="algoritmos">
+                <input type="checkbox" id="toggle-busquedas" class="toggle-input">
+                <label for="toggle-busquedas" class="algoritmos-title">Búsquedas
+                    <span class="toggle-button">▼</span>
+                </label>
+                <div class="algoritmos-content">
+                    <p class="algoritmos-text">Array. <br>Linked list.</p>
+                    <input id="objBuscar" class="algoritmos-input" type="text" placeholder="Ingresa el bussines a buscar">
+                    <button id="btn-buscar" class="algoritmos-button">BUSCAR</button>
+                </div>
+            </div>
+
+            <div class="algoritmos">
+                <input type="checkbox" id="toggle-ordenaciones" class="toggle-input">
+                <label for="toggle-ordenaciones" class="algoritmos-title">Ordenaciones
+                    <span class="toggle-button">▼</span>
+                </label>
+                <div class="algoritmos-content">
+                    <p class="algoritmos-text">Bubble sort. <br>Merge sort. <br>Radix sort.</p>
+                    <button id="btn-ordenar" class="algoritmos-button">ORDENAR</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main">
+            <div id="main_container-graph-insert"></div>
+            <div id="main_container-graph-search"></div>
+            <div id="main_container-graph-order"></div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <h1 class="footer-title">ESTRUCTURA DE DATOS AVANZADA</h1>
+        <p class="footer-parrafo">Andre Julian Gutierrez Alcazar. <br>Kevin Jimmy Morales Perez <br>3A</p>
+    </footer>
+
+    <script src="./src/controllers/script.mjs" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
